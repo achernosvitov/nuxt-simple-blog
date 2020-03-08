@@ -11,10 +11,10 @@
         </b-nav-item>
       </b-navbar-nav>
       <b-navbar-nav class="ml-md-auto" tag="ul">
-        <b-nav-item>
+        <b-nav-item v-b-modal.modal-signup>
           Sign up
         </b-nav-item>
-        <b-nav-item v-b-modal.modal-auth>
+        <b-nav-item v-b-modal.modal-signin>
           Sign in
         </b-nav-item>
       </b-navbar-nav>

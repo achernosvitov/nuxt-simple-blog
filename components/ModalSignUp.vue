@@ -1,8 +1,8 @@
 <template>
   <b-modal
-    id="modal-signin"
-    title="Sign in"
-    ok-title="Sign in"
+    id="modal-signup"
+    title="Sign up"
+    ok-title="Sign up"
     centered
     ok-only
     @shown="focusFirstInput"
@@ -15,12 +15,12 @@
     >
       <b-form-group
         label="Login"
-        label-for="sign-in-input-login"
+        label-for="sign-up-input-login"
         :state="loginState"
         invalid-feedback="Login length must be at least 3 characters"
       >
         <b-form-input
-          id="sign-in-input-login"
+          id="sign-up-input-login"
           ref="loginInput"
           v-model="login"
           :state="loginState"
@@ -29,14 +29,28 @@
       </b-form-group>
       <b-form-group
         label="Password"
-        label-for="sign-in-input-password"
+        label-for="sign-up-input-password"
         :state="passwordState"
         invalid-feedback="Password length must be at least 4 characters"
       >
         <b-form-input
-          id="sign-in-input-password"
+          id="sign-up-input-password"
           v-model="password"
           :state="passwordState"
+          type="password"
+          required
+        />
+      </b-form-group>
+      <b-form-group
+        label="Confirm password"
+        label-for="signup-input-confirm-password"
+        :state="confirmPasswordState"
+        invalid-feedback="Passwords must match"
+      >
+        <b-form-input
+          id="signup-input-confirm-password"
+          v-model="confirmPassword"
+          :state="confirmPasswordState"
           type="password"
           required
         />
@@ -51,8 +65,10 @@ export default {
     return {
       login: '',
       password: '',
+      confirmPassword: '',
       loginState: null,
-      passwordState: null
+      passwordState: null,
+      confirmPasswordState: null
     };
   },
 
@@ -75,8 +91,10 @@ export default {
       this.loginState = isLoginValid;
       const isPasswordValid = this.password.length >= 4;
       this.passwordState = isPasswordValid;
+      const doesPasswordsMatch = this.password === this.confirmPassword;
+      this.confirmPasswordState = doesPasswordsMatch;
 
-      return isLoginValid && isPasswordValid;
+      return isLoginValid && isPasswordValid && doesPasswordsMatch;
     },
     focusFirstInput() {
       this.$refs.loginInput.focus();
