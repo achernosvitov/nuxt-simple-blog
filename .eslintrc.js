@@ -15,7 +15,6 @@ module.exports = {
   rules: {
     'nuxt/no-cjs-in-config': 'off',
     'space-before-function-paren': ['error', 'never'],
-    'quotes': ['error', 'signle'],
     'semi': ['error', 'always']
   }
 }
