@@ -56,18 +56,18 @@ export default {
     return {
       login: '',
       loginState: null,
-      loginFeedback: false,
+      loginFeedback: '',
       password: '',
       passwordState: null,
-      passwordFeedback: false,
+      passwordFeedback: '',
       formState: null,
-      formFeedback: false
+      formFeedback: ''
     };
   },
 
   methods: {
     async handleSubmit() {
-      this.formFeedback = false;
+      this.formFeedback = '';
       if (!this.validateForm()) {
         return false;
       }
@@ -80,9 +80,9 @@ export default {
       } catch (e) {
         this.formState = false;
         this.loginState = false;
-        this.loginFeedback = false;
+        this.loginFeedback = '';
         this.passwordState = false;
-        this.passwordFeedback = false;
+        this.passwordFeedback = '';
         this.formFeedback = e.message || 'An error occured. Please try later.';
       }
     },
@@ -106,12 +106,12 @@ export default {
     resetForm() {
       this.login = '';
       this.loginState = null;
-      this.loginFeedback = false;
+      this.loginFeedback = '';
       this.password = '';
       this.passwordState = null;
-      this.passwordFeedback = false;
+      this.passwordFeedback = '';
       this.formState = null;
-      this.formFeedback = false;
+      this.formFeedback = '';
     }
   }
 };

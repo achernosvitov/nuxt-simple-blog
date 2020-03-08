@@ -16,7 +16,7 @@ export const actions = {
       commit('SET_USER', data.username);
       commit('SET_TOKEN', data.token);
     } catch (e) {
-      if (e.response && e.response.status === 401) {
+      if (e.response && e.response.status === 400) {
         throw new Error(e.response.data);
       }
       throw e;
@@ -26,6 +26,16 @@ export const actions = {
     await axios.post('/api/user/logout');
     commit('SET_USER', null);
     commit('SET_TOKEN', null);
+  },
+  async registerNewUser({ commit }, { username, password }) {
+    try {
+      await axios.post('/api/user/new', { username, password });
+    } catch (e) {
+      if (e.response && e.response.status === 409) {
+        throw new Error(e.response.data);
+      }
+      throw e;
+    }
   }
 };
 
