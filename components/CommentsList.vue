@@ -2,7 +2,6 @@
   <section class="comments">
     <h3>Comments</h3>
     <hr>
-    <CommentsForm v-if="username" />
     <b-row v-if="comments">
       <div v-for="comment in comments" :key="comment.id" class="comment">
         <div class="comment__username">
@@ -16,6 +15,7 @@
         </div>
       </div>
     </b-row>
+    <CommentsForm v-if="username" />
   </section>
 </template>
 
