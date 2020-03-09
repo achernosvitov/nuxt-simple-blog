@@ -25,6 +25,15 @@ app.post('/user/login', (req, res) => {
 });
 
 app.post('/user/logout', (req, res) => {
+  if (req.body.username) {
+    const rawData = fs.readFileSync('./api/db/users.json');
+    const users = JSON.parse(rawData);
+    const currentUserIndex = users.findIndex(user => user.username === req.body.username);
+    if (Number.isInteger(currentUserIndex)) {
+      delete users[currentUserIndex].accessToken;
+      fs.writeFileSync('./api/db/users.json', JSON.stringify(users));
+    }
+  }
   delete req.session.currentUser;
   res.sendStatus(200);
 });
@@ -85,8 +94,11 @@ app.post('/comments', (req, res) => {
   if (!req.body.username && !userData) {
     return res.sendStatus(403);
   }
-  if (req.body.text.length === 0) {
-    return res.status(400).send('Comment text must not be empty');
+  if (userData.accessToken !== req.headers.authorization) {
+    return res.status(403).send('Bad authentication token');
+  }
+  if (req.body.text.length < 10) {
+    return res.status(400).send('Comment text length must be at least 10 characters');
   }
   const rawData = fs.readFileSync('./api/db/comments.json');
   const data = JSON.parse(rawData);

@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const state = () => ({
   username: null,
   accessToken: null
@@ -12,7 +10,7 @@ export const getters = {
 export const actions = {
   async login({ commit }, { username, password }) {
     try {
-      const { data } = await axios.post('/api/user/login', { username, password });
+      const { data } = await this.$axios.$post('/api/user/login', { username, password });
       commit('SET_USER', data.username);
       commit('SET_TOKEN', data.token);
       this.$axios.setToken(data.token);
@@ -24,14 +22,15 @@ export const actions = {
     }
   },
   async logout({ commit }) {
-    await axios.post('/api/user/logout');
+    const username = await this.getters['user/username'];
+    await this.$axios.$post('/api/user/logout', { username });
     commit('SET_USER', null);
     commit('SET_TOKEN', null);
     this.$axios.setToken(false);
   },
   async registerNewUser({ commit }, { username, password }) {
     try {
-      await axios.post('/api/user/new', { username, password });
+      await this.$axios.$post('/api/user/new', { username, password });
     } catch (e) {
       if (e.response && e.response.status === 409) {
         throw new Error(e.response.data);
