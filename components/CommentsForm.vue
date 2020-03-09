@@ -1,7 +1,6 @@
 <template>
   <b-form
     class="mb-3"
-    @keyup.enter="submitForm"
     @submit.prevent="submitForm"
   >
     <b-form-group
@@ -18,7 +17,6 @@
           rows="4"
           max-rows="6"
           required
-          @submit.prevent="submitForm"
         />
       </b-form-group>
       <b-btn

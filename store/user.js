@@ -10,7 +10,7 @@ export const getters = {
 export const actions = {
   async login({ commit }, { username, password }) {
     try {
-      const { data } = await this.$axios.$post('/api/user/login', { username, password });
+      const data = await this.$axios.$post('/api/user/login', { username, password });
       commit('SET_USER', data.username);
       commit('SET_TOKEN', data.token);
       this.$axios.setToken(data.token);
