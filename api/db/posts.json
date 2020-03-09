@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1,
+    "title": "Lorem ipsum dolor",
+    "picture": "https://picsum.photos/1200/600/",
+    "previewText": "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Tempora eligendi laborum ad reprehenderit unde ex sed accusantium distinctio, nisi voluptatum assumenda, eum doloremque hic officiis ratione dignissimos. Accusantium, quidem qui?",
+    "detailText": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem ipsum quia, consequatur impedit doloremque, aperiam dolorem voluptates laudantium saepe minus rerum adipisci sint! Dicta esse nihil iste magni fuga minima.</p><p>Maiores sapiente ipsum quisquam distinctio aspernatur itaque, dolore, tempora labore animi eos provident placeat atque laborum debitis possimus! Ad qui deleniti eaque iste. Laborum aliquam ut natus! Ipsum, enim omnis!</p>"
+  }
+]

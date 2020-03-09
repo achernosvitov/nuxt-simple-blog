@@ -15,6 +15,7 @@ export const actions = {
       const { data } = await axios.post('/api/user/login', { username, password });
       commit('SET_USER', data.username);
       commit('SET_TOKEN', data.token);
+      this.$axios.setToken(data.token);
     } catch (e) {
       if (e.response && e.response.status === 400) {
         throw new Error(e.response.data);
@@ -26,6 +27,7 @@ export const actions = {
     await axios.post('/api/user/logout');
     commit('SET_USER', null);
     commit('SET_TOKEN', null);
+    this.$axios.setToken(false);
   },
   async registerNewUser({ commit }, { username, password }) {
     try {

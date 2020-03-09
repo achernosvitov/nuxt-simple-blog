@@ -87,9 +87,7 @@ export default {
           this.$bvModal.hide('modal-signup');
         });
         this.resetForm();
-        console.log('submitted');
       } catch (e) {
-        console.log('error');
         if (e.message === 'User with this username already exists') {
           this.loginState = false;
           this.loginFeedback = 'User with this username already exists';
@@ -112,8 +110,8 @@ export default {
       const isPasswordValid = this.password.length >= 4;
       this.passwordState = isPasswordValid;
       this.passwordFeedback = 'Password length must be at least 4 characters';
-      const DoesPasswordsMatch = this.password === this.confirmPassword;
-      this.confirmPasswordState = DoesPasswordsMatch;
+      const doesPasswordsMatch = this.password === this.confirmPassword;
+      this.confirmPasswordState = doesPasswordsMatch;
       this.confirmPasswordFeedback = 'Passwords must match';
 
       return isLoginValid && isPasswordValid;
