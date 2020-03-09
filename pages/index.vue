@@ -21,6 +21,12 @@ export default {
     ...mapGetters({
       posts: 'posts/all'
     })
+  },
+
+  head() {
+    return {
+      title: 'Home page'
+    };
   }
 };
 </script>

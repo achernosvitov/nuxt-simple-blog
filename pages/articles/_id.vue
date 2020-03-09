@@ -26,6 +26,12 @@ export default {
       post: 'post/post',
       comments: 'post/comments'
     })
+  },
+
+  head() {
+    return {
+      title: this.post.title
+    };
   }
 };
 </script>

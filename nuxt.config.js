@@ -76,8 +76,5 @@ module.exports = {
     // Api middleware
     // We add /api/login & /api/logout routes
     '~/api'
-  ],
-  server: {
-    port: process.env.PORT || 8000
-  }
+  ]
 };
